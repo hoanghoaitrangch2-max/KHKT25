@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Human Skeleton - 3D Model</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100dvh;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      z-index: 0;
+    }
+
+    .sketchfab-embed-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100dvh;
+      background: transparent;
+      z-index: 1;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100dvh;
+      border: none;
+      background: transparent;
+      display: block;
+    }
+
+    /* 🎯 Button style */
+    .btn-logo {
+      width: 55px;
+      height: 55px;
+      cursor: pointer;
+      z-index: 9999;
+      position: fixed;
+      bottom: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+
+    .btn-logo img {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 12px;
+    }
+
+    .btn-logo:hover { transform: scale(1.1); }
+
+    .youtube-logo { left: 50%; transform: translateX(-50%); }
+    .wiki-logo { right: 15px; }
+    .wiki-logo img { border-radius: 50%; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ⭐ Sketchfab Model -->
+  <div class="sketchfab-embed-wrapper">
+    <iframe id="api-frame" title="Human Skeleton" frameborder="0"
+      allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+      allow="autoplay; fullscreen; xr-spatial-tracking; execution-while-out-of-viewport; execution-while-not-rendered; web-share"
+      src="https://sketchfab.com/models/acf6b25134d945f8b0bc8ae5e04861df/embed?autostart=1&transparent=1&camera=0&ui_hint=0&ui_controls=1&ui_infos=0">
+    </iframe>
+
+    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+      <a href="https://sketchfab.com/3d-models/human-skeleton-acf6b25134d945f8b0bc8ae5e04861df"
+        target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Human Skeleton</a> by
+      <a href="https://sketchfab.com/versal" target="_blank" rel="nofollow"
+        style="font-weight: bold; color: #1CAAD9;">Versal</a> on
+      <a href="https://sketchfab.com" target="_blank" rel="nofollow"
+        style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+    </p>
+  </div>
+
+  <!-- ▶ YouTube Button -->
+  <a class="btn-logo youtube-logo" href="https://www.youtube.com/watch?v=uG4-asS34mk" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+  </a>
+
+  <!-- 🌐 Wikipedia Button -->
+  <a class="btn-logo wiki-logo" href="https://vi.wikipedia.org/wiki/Th%E1%BB%83_lo%E1%BA%A1i:B%E1%BB%99_x%C6%B0%C6%A1ng_ng%C6%B0%E1%BB%9Di" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia">
+  </a>
+
+  <!-- ⭐ Sketchfab API -->
+  <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
+  <script>
+    const iframe = document.getElementById('api-frame');
+    const uid = 'acf6b25134d945f8b0bc8ae5e04861df';
+
+    const client = new Sketchfab(iframe);
+    client.init(uid, {
+      success: function(api) {
+        api.start();
+        api.addEventListener('viewerready', function() {
+          api.setBackground({ color: [1, 1, 1], transparency: 0 });
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
